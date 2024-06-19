@@ -1,11 +1,9 @@
 import os
 import cv2
 import torch
-import pandas as pd
 from ultralytics import YOLO
-from tracker import *
 
-model_path = os.path.join('.', 'runs', 'detect', 'train22', 'weights', 'best.pt')
+model_path = os.path.join('.', 'runs', 'detect', 'train', 'weights', 'best.pt')
 model = YOLO(model_path)  # load a custom model
 class_list = ['guard', 'worker']
 #threshold = 0.5
