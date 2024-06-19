@@ -1,0 +1,6 @@
+opencv_python==4.9.0.80
+opencv_python_headless==4.8.0.74
+pandas==2.2.2
+torch==2.3.1+cu121
+tracker==0.1.1
+ultralytics==8.2.28
