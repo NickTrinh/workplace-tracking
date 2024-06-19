@@ -5,11 +5,11 @@ def run():
     # Check if CUDA is available
     device = torch.device('cuda')
     
-    model = YOLO("yolov8m.pt")
+    model = YOLO("yolov8n.pt")
     
     model.to(device) #Use GPU
     
-    model.train(data="C:/Users/nhatt/OneDrive/Desktop/workplace-tracking/data/data.yaml", batch=-1, epochs=150,patience=50)  # train the model
+    model.train(data="D:/projects/workplace-tracking/data/data.yaml", batch=-1, epochs=150,     patience=20)  # train the model
 
 if __name__ == '__main__':
     run()
