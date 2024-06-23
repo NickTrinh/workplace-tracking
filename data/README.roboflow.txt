@@ -1,8 +1,8 @@
 
-workplace-tracking - v7 2024-06-17 5:28am
+workplace-tracking - v13 2024-06-22 12:54pm
 ==============================
 
-This dataset was exported via roboflow.com on June 17, 2024 at 5:28 AM GMT
+This dataset was exported via roboflow.com on June 22, 2024 at 12:57 PM GMT
 
 Roboflow is an end-to-end computer vision platform that helps you
 * collaborate with your team on computer vision projects
@@ -17,18 +17,16 @@ visit https://github.com/roboflow/notebooks
 
 To find over 100k other datasets and pre-trained models, visit https://universe.roboflow.com
 
-The dataset includes 759 images.
+The dataset includes 882 images.
 Worker-guard are annotated in YOLOv8 format.
 
 The following pre-processing was applied to each image:
 * Auto-orientation of pixel data (with EXIF-orientation stripping)
-* Resize to 640x640 (Stretch)
+* Resize to 1280x1280 (Stretch)
 
 The following augmentation was applied to create 3 versions of each source image:
 * 50% probability of horizontal flip
-* 50% probability of vertical flip
-* Randomly crop between 0 and 30 percent of the image
+* Randomly crop between 0 and 20 percent of the image
 * Random rotation of between -15 and +15 degrees
-* Random shear of between -10° to +10° horizontally and -10° to +10° vertically
 
 

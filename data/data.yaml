@@ -2,12 +2,12 @@ train: ../train/images
 val: ../valid/images
 test: ../test/images
 
-nc: 2
-names: ['guard', 'worker']
+nc: 3
+names: ['breathalyzer', 'guard', 'worker']
 
 roboflow:
   workspace: personal-projects-yqrsc
   project: workplace-tracking
-  version: 7
+  version: 13
   license: CC BY 4.0
-  url: https://universe.roboflow.com/personal-projects-yqrsc/workplace-tracking/dataset/7
+  url: https://universe.roboflow.com/personal-projects-yqrsc/workplace-tracking/dataset/13

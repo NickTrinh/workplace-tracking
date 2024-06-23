@@ -2,11 +2,11 @@ task: detect
 mode: train
 model: yolov8n.pt
 data: D:/projects/workplace-tracking/data/data.yaml
-epochs: 150
+epochs: 300
 time: null
-patience: 20
+patience: 50
 batch: -1
-imgsz: 640
+imgsz: 1280
 save: true
 save_period: -1
 cache: false
@@ -22,7 +22,7 @@ seed: 0
 deterministic: true
 single_cls: false
 rect: false
-cos_lr: false
+cos_lr: true
 close_mosaic: 10
 resume: false
 amp: true
