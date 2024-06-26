@@ -3,7 +3,7 @@ import cv2
 import torch
 from ultralytics import YOLO
 
-model_path = os.path.join('.', 'runs', 'detect', 'train', 'weights', 'best.pt')
+model_path = os.path.join('.', 'runs', 'detect', 'train11', 'weights', 'best.pt')
 model = YOLO(model_path)  # load a custom model
 #threshold = 0.5
 
@@ -36,8 +36,8 @@ while cap.isOpened():
     if ret:
         imgRegion = cv2.bitwise_and(frame, mask)
         # Run YOLOv8 tracking on the frame
-        results = model.track(imgRegion, persist=True, tracker='botsort.yaml', imgsz=1280, 
-                            device='cuda:0', iou=0.3, conf=0.2)
+        results = model.track(imgRegion, persist=True, tracker='bytetrack.yaml', imgsz=1920, 
+                            device='cuda:0', iou=0.5, conf=0.25)
         
         # Visualize results on the frame
         annotated_frame = results[0].plot(img=frame)
