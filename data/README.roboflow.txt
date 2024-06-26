@@ -1,8 +1,8 @@
 
-workplace-tracking - v17 2024-06-25 4:06pm
+workplace-tracking - v19 2024-06-26 4:28am
 ==============================
 
-This dataset was exported via roboflow.com on June 25, 2024 at 4:08 PM GMT
+This dataset was exported via roboflow.com on June 26, 2024 at 4:35 AM GMT
 
 Roboflow is an end-to-end computer vision platform that helps you
 * collaborate with your team on computer vision projects
@@ -25,8 +25,6 @@ The following pre-processing was applied to each image:
 * Resize to 1280x1280 (Stretch)
 
 The following augmentation was applied to create 3 versions of each source image:
-* 50% probability of horizontal flip
-* Equal probability of one of the following 90-degree rotations: none, clockwise, counter-clockwise
 * Randomly crop between 0 and 20 percent of the image
 * Random rotation of between -15 and +15 degrees
 * Random shear of between -10° to +10° horizontally and -10° to +10° vertically

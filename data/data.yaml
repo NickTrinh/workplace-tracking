@@ -8,6 +8,6 @@ names: ['breathalyzer', 'guard', 'worker']
 roboflow:
   workspace: personal-projects-yqrsc
   project: workplace-tracking
-  version: 17
+  version: 19
   license: CC BY 4.0
-  url: https://universe.roboflow.com/personal-projects-yqrsc/workplace-tracking/dataset/17
+  url: https://universe.roboflow.com/personal-projects-yqrsc/workplace-tracking/dataset/19
