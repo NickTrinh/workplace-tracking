@@ -3,12 +3,10 @@ import torch
 
 def run():
     # Check if CUDA is available
-    device = torch.device('cuda')
     model = YOLO("yolov8s.pt").load("workerguardmodel.pt")
-    model.to(device) #Use GPU
     
     model.train(data="D:/projects/workplace-tracking/data/data.yaml", batch=-1, epochs=300, patience=30, 
-                imgsz=1280, cos_lr=True)  # train the model
+                imgsz=1280, cos_lr=True, amp=True, save=True, save_period=50, device=0)  # train the model
 
 if __name__ == '__main__':
     run()
