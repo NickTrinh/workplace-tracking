@@ -37,7 +37,7 @@ while cap.isOpened():
         imgRegion = cv2.bitwise_and(frame, mask)
         # Run YOLOv8 tracking on the frame
         results = model.track(imgRegion, persist=True, tracker='bytetrack.yaml', imgsz=1920, 
-                            device='cuda:0', iou=0.5, conf=0.25)
+                            device='cuda:0', conf=0.2)
         
         # Visualize results on the frame
         annotated_frame = results[0].plot(img=frame)
