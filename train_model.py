@@ -2,11 +2,10 @@ from ultralytics import YOLO
 import torch
 
 def run():
-    # Check if CUDA is available
-    model = YOLO("yolov8s.pt").load("workerguardmodel.pt")
+    model = YOLO("yolov8m.pt")
     
-    model.train(data="D:/projects/workplace-tracking/data/data.yaml", batch=-1, epochs=300, patience=50, 
-                imgsz=1280, cos_lr=True, amp=True, save=True, save_period=50, device=0)  # train the model
+    model.train(data="D:/projects/workplace-tracking/data/data.yaml", batch=-1, epochs=900, patience=90, 
+                imgsz=1280, hsv_h=0, hsv_v=0, hsv_s=0, scale=0, shear=0, translate=0, device=0, amp=True, cos_lr=True)
 
 if __name__ == '__main__':
     run()
