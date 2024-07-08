@@ -3,7 +3,7 @@ import cv2
 import torch
 from ultralytics import YOLO
 
-model_path = os.path.join('.', 'runs', 'detect', 'train11', 'weights', 'best.pt')
+model_path = os.path.join('.', 'runs', 'detect', 'train14', 'weights', 'best.pt')
 model = YOLO(model_path)  # load a custom model
 #threshold = 0.5
 
@@ -25,22 +25,29 @@ def boxes_overlap(box1, box2):
     x_min1, y_min1, x_max1, y_max1 = box1
     x_min2, y_min2, x_max2, y_max2 = box2
     
-    return not (x_max1 < x_min2 or x_max2 < x_min1 or y_max1 < y_min2 or y_max2 < y_min1)
-
-mask = cv2.imread('videos/mask.png')
+    # Calculate the area of each bounding box
+    area_box1 = (x_max1 - x_min1) * (y_max1 - y_min1)
+    area_box2 = (x_max2 - x_min2) * (y_max2 - y_min2)
+    
+    # Calculate the intersection area
+    intersection_area = max(0, min(x_max1, x_max2) - max(x_min1, x_min2)) * max(0, min(y_max1, y_max2) - max(y_min1, y_min2))
+    
+    # Calculate the overlap ratio
+    overlap_ratio = intersection_area / min(area_box1, area_box2)
+    
+    return overlap_ratio > 0.001
 
 while cap.isOpened():
     # Read frame from video
     ret, frame = cap.read()
     
     if ret:
-        imgRegion = cv2.bitwise_and(frame, mask)
         # Run YOLOv8 tracking on the frame
-        results = model.track(imgRegion, persist=True, tracker='bytetrack.yaml', imgsz=1920, 
-                            device='cuda:0', conf=0.2)
+        results = model.track(frame, persist=True, tracker='bytetrack.yaml', imgsz=1280, 
+                            device='cuda:0', conf=0.1, iou=0.3, agnostic_nms=True)
         
         # Visualize results on the frame
-        annotated_frame = results[0].plot(img=frame)
+        annotated_frame = results[0].plot()
         
         
         line_y = 300
