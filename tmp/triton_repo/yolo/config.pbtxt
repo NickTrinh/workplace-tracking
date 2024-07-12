@@ -1,0 +1,5 @@
+backend: "onnxruntime"
+platform: "onnxruntime_onnx"
+max_batch_size: 1
+
+dynamic_batching { }
