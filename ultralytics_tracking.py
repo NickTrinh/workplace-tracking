@@ -3,7 +3,7 @@ import cv2
 import torch
 from ultralytics import YOLO
 
-model_path = os.path.join('.', 'runs', 'detect', 'train14', 'weights', 'best.pt')
+model_path = os.path.join('.', 'runs', 'detect', 'train', 'weights', 'best.pt')
 model = YOLO(model_path)  # load a custom model
 #threshold = 0.5
 
@@ -35,7 +35,7 @@ def boxes_overlap(box1, box2):
     # Calculate the overlap ratio
     overlap_ratio = intersection_area / min(area_box1, area_box2)
     
-    return overlap_ratio > 0.001
+    return overlap_ratio > 0.05
 
 while cap.isOpened():
     # Read frame from video
@@ -44,7 +44,7 @@ while cap.isOpened():
     if ret:
         # Run YOLOv8 tracking on the frame
         results = model.track(frame, persist=True, tracker='bytetrack.yaml', imgsz=1280, 
-                            device='cuda:0', conf=0.1, iou=0.3, agnostic_nms=True)
+                            device='cuda:0', conf=0.2, iou=0.3)
         
         # Visualize results on the frame
         annotated_frame = results[0].plot()
