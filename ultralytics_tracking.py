@@ -2,26 +2,26 @@ import cv2
 import torch
 import os
 from ultralytics import YOLO
-
-model_path = os.path.join('.', 'runs', 'detect', 'train', 'weights', 'best.pt')
-model = YOLO(model_path)  # load a custom model
+from triton_run import triton_run_server
 
 def workplace_tracking(source_video_path, confidence_score, iou_score):
-
+    
+    model = YOLO("http://localhost:8000/yolo", task="detect") # Load model
+    
     video_path_out = '{}_out.mp4'.format(os.path.splitext(source_video_path)[0]) # output video
     
     print(source_video_path)
     print(video_path_out)
-
+    
     cap = cv2.VideoCapture(source_video_path) # in video
     ret, frame = cap.read()
     H, W, _ = frame.shape
     out = cv2.VideoWriter(video_path_out, cv2.VideoWriter_fourcc(*'H264'), 
                         int(cap.get(cv2.CAP_PROP_FPS)), (W, H)) # out video
-
+    
     direction={}
     direction_counter=set()
-
+    
     # Function to check if two boxes overlap
     def boxes_overlap(box1, box2):
         x_min1, y_min1, x_max1, y_max1 = box1
@@ -38,7 +38,7 @@ def workplace_tracking(source_video_path, confidence_score, iou_score):
         overlap_ratio = intersection_area / min(area_box1, area_box2)
         
         return overlap_ratio > 0.05
-
+    
     while cap.isOpened():
         # Read frame from video
         ret, frame = cap.read()
