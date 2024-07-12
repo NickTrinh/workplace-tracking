@@ -1,6 +1,7 @@
 import gradio as gr
 from ultralytics import YOLO
 from ultralytics_tracking import workplace_tracking
+from triton_run import triton_run_server
 
 iface = gr.Interface(
     fn=workplace_tracking,
@@ -17,4 +18,5 @@ iface = gr.Interface(
 )
 
 if __name__ == "__main__":
+    triton_run_server()
     iface.launch()
