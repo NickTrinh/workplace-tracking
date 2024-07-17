@@ -1,4 +1,6 @@
+gradio==4.38.1
 opencv_python==4.8.1.78
 opencv_python_headless==4.8.0.74
 torch==2.3.1+cu121
-ultralytics==8.2.52
+tritonclient==2.47.0
+ultralytics==8.2.55
