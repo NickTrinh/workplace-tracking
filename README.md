@@ -8,3 +8,5 @@ Other dependencies:
 Refer to this for the appropiate PyTorch version: https://pytorch.org/get-started/locally/
 
 pip install tritonclient[all]
+
+This project was built during my internship with Rainscales.
